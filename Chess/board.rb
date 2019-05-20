@@ -22,14 +22,7 @@ class Board
   end
 
   def move_piece(start_pos, end_pos)
-    start_x, start_y = start_pos
-    end_x, end_y = end_pos
 
-    invalid_start = (start_x < 0 || start_x > 7) && (start_y < 0 || start_y > 7)
-    invalid_end = (end_x < 0 || end_x > 7) && (end_y < 0 || end_y > 7)
-
-    raise 'Invalid start pos' if invalid_start
-    raise 'Invalid start pos' if invalid_end
   end
   
 end
