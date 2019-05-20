@@ -9,3 +9,4 @@ class Piece
     "#{@pos}"
   end
 end
+
