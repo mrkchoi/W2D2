@@ -1,6 +1,13 @@
 # PHASE 2
 def convert_to_int(str)
-  Integer(str)
+  begin
+    Integer(str)
+  rescue ArgumentError => e
+
+    print "Rescued from\n #{e.backtrace.join("\n\n")}"
+    print "\n\n"
+    nil
+  end
 end
 
 # PHASE 3
@@ -10,16 +17,29 @@ def reaction(maybe_fruit)
   if FRUITS.include? maybe_fruit
     puts "OMG, thanks so much for the #{maybe_fruit}!"
   else 
-    raise StandardError 
+    if maybe_fruit=="coffee"
+      raise CoffeeError 
+    end
+    raise NonCoffeeError
   end 
+  
 end
 
 def feed_me_a_fruit
   puts "Hello, I am a friendly monster. :)"
 
-  puts "Feed me a fruit! (Enter the name of a fruit:)"
-  maybe_fruit = gets.chomp
-  reaction(maybe_fruit) 
+  
+  
+  begin
+    puts "Feed me a fruit! (Enter the name of a fruit:)"
+    maybe_fruit = gets.chomp
+    reaction(maybe_fruit) 
+  rescue CoffeeError
+    p "Yay that was coffe try again. that wasn't a fruit"
+    retry
+  rescue NonCoffeeError
+    p "you failed no more tries"
+  end
 end  
 
 # PHASE 4
@@ -43,4 +63,5 @@ class BestFriend
   end
 end
 
-
+class CoffeeError < StandardError; end
+class NonCoffeeError < StandardError; end
