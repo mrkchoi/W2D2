@@ -45,6 +45,10 @@ end
 # PHASE 4
 class BestFriend
   def initialize(name, yrs_known, fav_pastime)
+    raise BestiesErrors.new('Def not besties. Needs more time.') if yrs_known <= 5
+    raise NameMissingError.new("Can't leave name blank!") if name.length <= 0
+    raise PastTimeError.new('Really, don\'t have a fav pasttime?') if fav_pastime.length <= 0
+    
     @name = name
     @yrs_known = yrs_known
     @fav_pastime = fav_pastime
@@ -65,3 +69,6 @@ end
 
 class CoffeeError < StandardError; end
 class NonCoffeeError < StandardError; end
+class BestiesErrors < Exception; end
+class NameMissingError < StandardError; end
+class PastTimeError < StandardError; end
