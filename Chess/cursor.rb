@@ -85,6 +85,8 @@ class Cursor
       update_pos(MOVES[:left])
     when :right
       update_pos(MOVES[:right])
+    when :ctrl_c
+      Process.exit(0)
     when :return
       return @cursor_pos
     when :space

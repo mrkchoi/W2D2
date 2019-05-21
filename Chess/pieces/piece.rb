@@ -7,7 +7,7 @@ class Piece
   end
 
   def inspect
-    "#{@pos}"
+    "P"
   end
 end
 

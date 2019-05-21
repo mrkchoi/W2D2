@@ -9,7 +9,7 @@ class Board
 
   def setup_board
     # (color, board, pos)
-    rows = Array.new(8) {Array.new(8) {nil}}
+    rows = Array.new(8) {Array.new(8) {"_"}}
 
     (0...rows.length).each do |row_i|
       (0...rows.length).each do |col_j|
@@ -38,10 +38,7 @@ class Board
 end
 class BoardMoveError < StandardError ; end
 
-#if __FILE__ == $PROGRAM_NAME
+if __FILE__ == $PROGRAM_NAME
   b = Board.new
   p b.rows
-  
-
-
-#end
+end
