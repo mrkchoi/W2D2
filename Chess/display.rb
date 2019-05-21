@@ -16,7 +16,7 @@ class Display
       row.each_with_index do |col, col_i|
         cursor_x, cursor_y = @cursor.cursor_pos
         if row_i == cursor_x && col_i == cursor_y
-          print 'C'.colorize(:color => :black, :background => :light_yellow)
+          print ' C '.colorize(:color => :black, :background => :light_yellow)
         elsif @board.rows[row_i][col_i].is_a?(Piece)
           print ' P '
         else
