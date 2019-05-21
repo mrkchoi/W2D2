@@ -61,8 +61,8 @@ class Board
   def move_piece(start_pos, end_pos)
     st_x,st_y=start_pos
     ed_x,ed_y=end_pos
-    raise BoardMoveError.new("No piece at start position") unless @rows[st_x][st_y].is_a?(Piece)
-    raise BoardMoveError.new("Can not move there") if @rows[ed_x][ed_y].is_a?(Piece)
+    # raise BoardMoveError.new("No piece at start position") unless @rows[st_x][st_y].is_a?(Piece)
+    # raise BoardMoveError.new("Can not move there") if @rows[ed_x][ed_y].is_a?(Piece)
     @rows[st_x][st_y], @rows[ed_x][ed_y] = @rows[ed_x][ed_y],@rows[st_x][st_y]
   end 
   

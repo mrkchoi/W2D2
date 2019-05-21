@@ -32,16 +32,21 @@ MOVES = {
 
 class Cursor
 
-  attr_reader :cursor_pos, :board
+  attr_reader :cursor_pos, :board, :selected_pos
 
   def initialize(cursor_pos, board)
     @cursor_pos = cursor_pos
     @board = board
+    @selected_pos = []
   end
 
   def get_input
     key = KEYMAP[read_char]
     handle_key(key)
+  end
+
+  def reset_selected_pos
+    @selected_pos = []
   end
 
   private
@@ -88,8 +93,19 @@ class Cursor
     when :ctrl_c
       Process.exit(0)
     when :return
+      if @selected_pos.empty? || @selected_pos.length == 1
+        @selected_pos << @cursor_pos
+      else
+        @selected_pos = [@cursor_pos]
+      end
       return @cursor_pos
     when :space
+      if @selected_pos.empty? || @selected_pos.length == 1
+        @selected_pos << @cursor_pos
+      else
+        @selected_pos = [@cursor_pos]
+      end
+
       return @cursor_pos
     end
   end

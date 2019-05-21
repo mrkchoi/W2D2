@@ -33,17 +33,18 @@ class Display
       print "\n"
     end
   end
-  
+
+  def check_cursor_pos
+    if @cursor.selected_pos.length == 2
+      start_pos, end_pos = @cursor.selected_pos
+      @board.move_piece(start_pos, end_pos)
+      @cursor.reset_selected_pos
+    end
+  end
 
 end
 
 
-if __FILE__ == $PROGRAM_NAME
-  d = Display.new(Board.new)
-
-  String.color_samples 
-  while true
-    d.render
-    d.cursor.get_input
-  end  
-end
+# if __FILE__ == $PROGRAM_NAME
+ 
+# end

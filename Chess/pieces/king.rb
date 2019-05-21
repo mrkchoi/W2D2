@@ -3,7 +3,7 @@ require_relative "./modules/stepable.rb"
 
 class King < Piece
   include Stepable
-  attr_reader :symbol
+  attr_reader :symbol, :possible_moves
 
   def symbol
     if @color == 'white'
@@ -17,6 +17,12 @@ class King < Piece
 
   def move_dirs
     
+  end
+
+  private
+
+  def possible_moves
+    @possible_moves = []
   end
   
 end
