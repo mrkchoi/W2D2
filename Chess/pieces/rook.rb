@@ -6,7 +6,13 @@ class Rook < Piece
   attr_reader :symbol
 
   def symbol
-    :R
+    if @color == 'white'
+      # white
+      "\u2656".force_encoding('utf-8')
+    else
+      # black
+      "\u265C".force_encoding('utf-8')
+    end
   end
 
   def move_dirs

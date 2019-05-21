@@ -6,7 +6,13 @@ class Queen < Piece
   attr_reader :symbol
 
   def symbol
-    :Q
+    if @color == 'white'
+      # white
+      "\u2655".force_encoding('utf-8')
+    else
+      # black
+      "\u265B".force_encoding('utf-8')
+    end
   end
 
   def move_dirs

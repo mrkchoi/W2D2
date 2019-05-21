@@ -11,6 +11,7 @@ class NullPiece < Piece
   end
 
   def symbol
+    return ' '
   end
 
 end

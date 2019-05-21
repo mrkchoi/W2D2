@@ -1,11 +1,14 @@
 class Piece
-  attr_reader  :pos
+  attr_reader :pos, :color
+  
   def initialize(color, board, pos)
     @color = color
     @board = board
     @pos = pos
   end
+
   def to_s
+    symbol.force_encoding('utf-8')
   end
 
   def emtpy?
@@ -28,9 +31,4 @@ class Piece
   def move_into_check?
   end
 
-end
-
-
-class Rook < Piece
-  include Slidable
 end

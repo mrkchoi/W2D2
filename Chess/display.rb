@@ -15,13 +15,20 @@ class Display
     @board.rows.each_with_index do |row, row_i|
       row.each_with_index do |col, col_i|
         cursor_x, cursor_y = @cursor.cursor_pos
+        piece_symbol = @board.rows[row_i][col_i].symbol
+
         if row_i == cursor_x && col_i == cursor_y
-          print ' C '.colorize(:color => :black, :background => :light_yellow)
-        elsif @board.rows[row_i][col_i].is_a?(Piece)
-          print ' P '
-        else
-          print ' _ '
+          print " #{piece_symbol} ".colorize(:background => :light_yellow)
+        elsif row_i.even? && col_i.even?
+          print " #{piece_symbol} ".colorize(:background => :white)
+        elsif row_i.even? && col_i.odd?
+          print " #{piece_symbol} ".colorize(:background => :cyan)
+        elsif row_i.odd? && col_i.even?
+          print " #{piece_symbol} ".colorize(:background => :cyan)
+        elsif row_i.odd? && col_i.odd?
+          print " #{piece_symbol} ".colorize(:background => :white)
         end
+
       end
       print "\n"
     end
@@ -34,7 +41,7 @@ end
 if __FILE__ == $PROGRAM_NAME
   d = Display.new(Board.new)
 
-  # String.color_samples 
+  String.color_samples 
   while true
     d.render
     d.cursor.get_input

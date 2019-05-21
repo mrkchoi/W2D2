@@ -6,7 +6,14 @@ class Bishop < Piece
   attr_reader :symbol
 
   def symbol
-    :B
+    if @color == 'white'
+      # white
+      "\u2657"
+    else
+      # black
+      "\u265D"
+    end
+
   end
 
   def move_dirs
