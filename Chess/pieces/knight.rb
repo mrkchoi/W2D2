@@ -15,8 +15,24 @@ class Knight < Piece
     end
   end
 
-  def move_dirs
-    
+  def move_diffs
+      @move_diffs = [
+        [2,1],
+        [-2,1],
+        [2,-1],
+        [-2,-1],
+        [1,2],
+        [-1,2],
+        [1,-2],
+        [-1,-2]
+      ]
   end
   
 end
+
+
+# (start arry), (end array)
+# #can move
+# #if end possition has someting you can take
+# #compare colors
+# pos_moves=@moves_diffs.map{|el| start_arra+el}

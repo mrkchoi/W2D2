@@ -93,17 +93,22 @@ class Cursor
     when :ctrl_c
       Process.exit(0)
     when :return
-      if @selected_pos.empty? || @selected_pos.length == 1
+      x, y = @cursor_pos
+
+      if @selected_pos.empty? && !@board[x][y].is_a?(NullPiece) 
         @selected_pos << @cursor_pos
-      else
-        @selected_pos = [@cursor_pos]
+      elsif @selected_pos.length == 1
+        @selected_pos << @cursor_pos
       end
+      
       return @cursor_pos
     when :space
-      if @selected_pos.empty? || @selected_pos.length == 1
+      x, y = @cursor_pos
+
+      if @selected_pos.empty? && !@board.rows[x][y].is_a?(NullPiece) 
         @selected_pos << @cursor_pos
-      else
-        @selected_pos = [@cursor_pos]
+      elsif @selected_pos.length == 1
+        @selected_pos << @cursor_pos
       end
 
       return @cursor_pos

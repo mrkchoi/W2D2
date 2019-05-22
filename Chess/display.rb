@@ -37,6 +37,7 @@ class Display
   def check_cursor_pos
     if @cursor.selected_pos.length == 2
       start_pos, end_pos = @cursor.selected_pos
+      
       @board.move_piece(start_pos, end_pos)
       @cursor.reset_selected_pos
     end

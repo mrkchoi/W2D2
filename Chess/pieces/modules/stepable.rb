@@ -1,9 +1,10 @@
 module Stepable
   def moves
+
   end
 
-  def move_difs
-
+  def move_diffs
+    
   end
   
 end
